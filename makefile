@@ -2,8 +2,12 @@
 CXX = g++
 
 # Compiler flags
-CXXFLAGS = -std=c++11 -Wall -I"C:/Users/liliana/rapidjson/include"
+CXXFLAGS =  -std=c++17 -Wall -I./rapidjson/include
 
+
+
+#Linker flags
+LDFLAGS = -lcurl -lpthread
 # Target executable
 TARGET = graph
 
@@ -14,8 +18,8 @@ SRC = graph.cpp
 all: $(TARGET)
 
 $(TARGET): $(SRC)
-	$(CXX) $(CXXFLAGS) -o $(TARGET) $(SRC)
+	$(CXX) $(CXXFLAGS) -o $(TARGET) $(SRC) $(LDFLAGS)
 
 # Clean rule (Windows-compatible)
 clean:
-	del /f $(TARGET)
+	rm -f $(TARGET)
